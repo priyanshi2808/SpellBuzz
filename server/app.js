@@ -22,8 +22,13 @@ app.use(express.static(static_path));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// set view engins 
+app.set('view engine' , 'hbs');
 
-
+// template engine route
+app.get("",(req,res)=>{
+    res.render('index');
+})
 
 
 // *****************************ROUTES*************************************************

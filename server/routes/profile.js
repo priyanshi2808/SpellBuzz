@@ -22,7 +22,7 @@ router.get("/me", auth, async (req, res) => {
 
 router.post("/", auth, async (req, res) => {
     console.log("posting profile");
-    const { bio, age, school } = req.body;
+    const { bio, age, school,avatar } = req.body;
     //console.log(req.user);
     // build profile object
     const profileField = {};
@@ -32,6 +32,8 @@ router.post("/", auth, async (req, res) => {
         profileField.age = age;
     if (school)
         profileField.school = school;
+    if(avatar)
+        profileField.avatar = avatar;
 
     try {
         let profile = await User.findOneAndUpdate({ _id : (req.user.id)}
@@ -45,6 +47,31 @@ router.post("/", auth, async (req, res) => {
         res.status(500).send("Server error");
     }
 })
+
+
+// update score
+
+router.post("/score", auth, async (req, res) => {
+    console.log("posting profile");
+    const { Score } = req.body;
+    //console.log(req.user);
+    // build profile object
+    const profileField = {};
+    if (Score)
+    profileField.Score = Score;
+    try {
+        let profile = await User.findOneAndUpdate({ _id : (req.user.id)}
+                    , { $set: profileField }
+                    , { new: true });
+
+            console.log("updated score");
+            return res.json(profile);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send("Server error");
+    }
+})
+
 
 // get all profile
 
