@@ -5,12 +5,14 @@ body {
   margin: 15px 30px;
   font-size: 17px;
   padding: 8px;
-  text-align: start;
+  text-align: center;
+  text-emphasis-color: white;
 }
 
 .container {
   position: relative;
   margin-top: 37px;
+  margin-left: 36%;
   margin-bottom: 37px;
   width: 500px;
   padding: 40px;
@@ -22,4 +24,7 @@ body {
 .link {
   position: relative;
   text-align: center;
+}
+.update {
+  background-color: #4daea1;
 }
