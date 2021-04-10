@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,8 +11,14 @@
 
 <body>
     <h1>All profile</h1>
+    <a href="myProfile" class="link-info">My Profile</a>
+    &nbsp; &nbsp; &nbsp;
+    <a href="../index" class="link-info">Game</a>
     <dev>
         {{#each users}}
+        <p>************************************************************************************************************
+        </p>
+        <h4>avatar : <img src="https://joeschmoe.io/api/v1/{{this.name}}" height="123"> </h4>
         <h4>name : {{this.name}}</h4>
         <h4>email : {{this.email}}</h4>
         <h4>bio : {{this.bio}}</h4>

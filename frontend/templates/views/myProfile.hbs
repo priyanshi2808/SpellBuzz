@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,15 +10,21 @@
 </head>
 
 <body>
+
+    <a href="../index" class="link-info">Game</a>
+    &nbsp; &nbsp; &nbsp;
+    <a href="allProfile" class="link-info">All Profiles</a>
     <h1>my profile</h1>
+
     {{#if user}}
-    <p>user exist</p>
-    <h6>name : {{user.name}}</h6>
-    <h6>email : {{{user.email}}};</h6>
-    <h6>bio : {{user.bio}}</h6>
-    <h6>age : {{user.age}}</h6>
-    <h6>School : {{user.school}}</h6>
-    <h6>No of Words Explored : {{user.Score}}</h6>
+
+    <h4>avatar : <img src="https://joeschmoe.io/api/v1/{{user.name}}" height="123"> </h4>
+    <h4>name : {{user.name}}</h4>
+    <h4>email : {{{user.email}}};</h4>
+    <h4>bio : {{user.bio}}</h4>
+    <h4>age : {{user.age}}</h4>
+    <h4>School : {{user.school}}</h4>
+    <h4>No of Words Explored : {{user.Score}}</h4>
     &nbsp; &nbsp; &nbsp;
     <a href="updateProfile" class="link-info">Update Profile</a>
     {{else}}
