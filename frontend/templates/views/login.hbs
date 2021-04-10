@@ -7,7 +7,7 @@
         integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>signup</title>
+    <title>Login</title>
     <link rel="stylesheet" href="../../public/css/login.css">
 </head>
 
@@ -17,6 +17,11 @@
         crossorigin="anonymous"></script>
 
     <div class="container text-white">
+        {{#if success}}
+        <div class="alert alert-success">
+            {{success}}
+        </div>
+        {{/if}}
         <form action="/api/login" method="POST">
             <h1>login</h1>
 

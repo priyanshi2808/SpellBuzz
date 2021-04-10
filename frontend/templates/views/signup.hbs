@@ -20,6 +20,11 @@
     </div>
     <div class="container text-white">
         <h1>Signup</h1>
+        {{#if success}}
+        <div class="alert alert-success">
+            {{success}}
+        </div>
+        {{/if}}
         <form action="/api/signup" method="POST">
 
             <p>* Name: <input type="text" name="name" required> </p>

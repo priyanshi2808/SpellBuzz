@@ -15,9 +15,12 @@ const config = require('../config/default.json');
 
 router.get("/signup", (req, res) => {
     //console.log("get signup");
-    res.sendFile(path.join(__dirname, '../../../front_end/src', 'signup.html'));
+    //res.sendFile(path.join(__dirname, '../../../front_end/src', 'signup.html'));
+    res.render("signup");
 })
-
+router.get("/login", (req,res)=>{
+  res.render("login");
+})
 router.post("/login",[
   check('email', 'Please input valid email').isEmail(),
 
@@ -30,7 +33,7 @@ router.post("/login",[
       const errors = validationResult(req);
       if (!errors.isEmpty()) {
         console.log(errors);
-        return res.status(400).send("enter valid details");
+        res.render("login",{success : "enter valid details"});
       }
 
   const { email, name, password } = req.body;
@@ -39,15 +42,13 @@ router.post("/login",[
     const salt = await bcrypt.genSalt(10);
 
     if (!user) {
-      return res
-        .status(400).send("invalid Credentials");
+      res.render("login",{success : "invalid credentials"});
     }
 
     const isMatch = await bcrypt.compare(password, user.password);
 
     if (!isMatch) {
-      return res
-        .status(400).send("invalid Credentials");
+      res.render("login",{success : "invalid credentials"});
     }
 
 
@@ -79,7 +80,8 @@ router.post("/login",[
   } catch (error) {
     console.log("catch");
     console.log(error);
-    res.status(400).send(error);
+    //res.status(400).send(error);
+    res.render("login",{success : " server error "});
   }
 });
 router.post('/signup',[
@@ -100,7 +102,8 @@ router.post('/signup',[
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
           console.log(errors);
-          return res.status(400).json("enter valid details");
+          //return res.status(400).json("enter valid details");
+          return res.render("signup",{success : "enter valid details"});
         }
      /*    if ((req.body.confirmPassword === req.body.password)) {
             return  res.status(400).send("password must match!");
@@ -111,8 +114,7 @@ router.post('/signup',[
         const salt = await  bcrypt.genSalt(10);
   
         if (user) {
-            return res
-              .status(400).send("uesr already exists!");
+           return res.render("signup",{success : "uesr already exists!"});
           }
         const avatar = gravatar.url(email,{
             s:'200',
@@ -158,7 +160,8 @@ router.post('/signup',[
     } catch (error) {
         console.log("catch");
         console.log(error);
-        res.status(400).send(error); 
+        //res.status(400).send(error); 
+        res.render("signup",{success : "server error"});
     }
 });
 
