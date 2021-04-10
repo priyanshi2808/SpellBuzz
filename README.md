@@ -1,7 +1,7 @@
 # SpellBuzz
 ![image](https://user-images.githubusercontent.com/72269908/114285481-2787e280-9a75-11eb-8c76-1bba2567a3ec.png)
 ### Introduction: 
-Website that helps user in enhansing their vocabulary and spellings with a simple game
+Website that helps user in enhancing their vocabulary and spellings with a simple game
 ### Video link: 
 https://www.youtube.com/watch?v=wlOsbflwk_A
 ### Presentation link:
@@ -14,7 +14,7 @@ Nodejs , express, mongodb
 1. https://joeschmoe.io/ 
 2. https://random-words-api.vercel.app/word
 ### Contributers: 
-1.Priyanshi Dixit - priyanshi2k@gmail.com 
+1.Priyanshi Dixit - priyanshi2k@gmail.com          
 2.Anjali Bhata - anjalibhatia0305@gmail.com  
 3.Ayushi Barua - ayushib663@gmail.com  
   
