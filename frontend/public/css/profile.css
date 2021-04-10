@@ -2,14 +2,17 @@ body {
   position: relative;
   font-family: sans-serif;
   background: linear-gradient(#141e30, #243b55);
+  margin: 15px 30px;
+  font-size: 17px;
+  padding: 8px;
   text-align: start;
 }
 
 .container {
   position: relative;
-  margin-top: 12%;
+  margin-top: 37px;
   margin-left: 36%;
-  margin-bottom: 12%;
+  margin-bottom: 37px;
   width: 400px;
   padding: 40px;
   background-color: rgba(0, 0, 0, 0.5);
@@ -17,23 +20,7 @@ body {
   border: 2px solid darkgray;
   border-radius: 5px;
 }
-
-input[type="text"],
-select,
-textarea {
-  width: 80%;
-  padding: 10px;
-  border: 1px solid cornflowerblue;
-  border-radius: 4px;
-  margin: 8px;
-}
-
-input[type="submit"] {
-  background-color: thistle;
-  padding: 12px 18px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
+.link {
   position: relative;
-  width: 50%;
+  text-align: center;
 }

@@ -36,7 +36,7 @@ const temp_path = path.join(path.join(__dirname, "../frontend/templates/views"))
 app.set("views",temp_path);
 const partials = path.join(path.join(__dirname, "../frontend/templates/partials"));
 hbs.registerPartials(partials);
-console.log(path.join(__dirname, "../frontend/templates/views"));
+//console.log(path.join(__dirname, "../frontend/templates/views"));
 // root set
 app.get("/", (req,res)=>{
     res.render("login");

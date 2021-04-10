@@ -46,7 +46,7 @@
                     <a href="profile/allProfile" class="link-info">All Profiles</a>
                     &nbsp; &nbsp; &nbsp;
                     <form action="/api/logout" method="post">
-                        <li class="pt-2"></li><button type="submit">Logout</button></li>
+                        <li class="pt-2"></li><button type="submit" class="btn-success">Logout</button></li>
                     </form>
                 </div>
             </div>
@@ -62,6 +62,7 @@
             <h3 class="msg hidden"></h3>
             <h3 class="correct hidden"></h3>
             <br>
+            <h5>Hint </h5>
             <h5 class="meaning hidden">Hint: </h5>
             <br>
             <p>
@@ -72,8 +73,16 @@
 
             </p>
             <br>
-            <h4> signup to get your score in profile <p class="score"></p>
+            <h4> Score for the current word <p class="score"></p>
             </h4>
+            <p>
+            <div>
+                <form action="/profile/score" method="post">
+                    <input type="hidden" value=1 name="Score" />
+                    <button type="submit" class="btn-success"> Next word </button>
+                </form>
+            </div>
+            </p>
         </div>
     </section>
 
@@ -106,7 +115,7 @@
                     console.log('correct');
                     play = false;
                     msg.innerHTML = "Awesome, your answer is correct";
-                    btn.innerHTML = "Next";
+                    //  btn.innerHTML = "Next";
                     guess.classList.toggle('hidden');
                     guess.value = "";
                     s = s + 4;
@@ -143,10 +152,6 @@
     console.log(score.innerHTML);
     alert("score " score.innerHTML);
     }); --}}
-    <form action="/profile/score" method="post">
-        <input type="hidden" value=1 name="Score" />
-        <button type="submit"> Next word </button>
-    </form>
 
 </body>
 
