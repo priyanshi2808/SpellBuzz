@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../public/css/index.css">
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="../../public/js/index.js"></script>
+
+    <title>Home</title>
+
+</head>
+
+<body>
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+        crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
+    -->
+    <section id="navigation bar">
+        <nav class="navbar navbar-expand-lg text-white" style="background-color: rgba(0,0,0,.5);">
+            <div class="container">
+                <label class="logo ">Practice your Spellings</label>
+                <div class="navbar-nav mr-auto">
+                    <a href="login">Login</a>
+                    &nbsp; &nbsp; &nbsp;
+                    <a href="signup" class="link-info">Signup</a>
+                    &nbsp; &nbsp; &nbsp;
+                    <a href="profile/myProfile" class="link-info">My Profile</a>
+                    &nbsp; &nbsp; &nbsp;
+                    <a href="profile/allProfile" class="link-info">All Profiles</a>
+                    &nbsp; &nbsp; &nbsp;
+                    <form action="/api/logout" method="post">
+                        <li class="pt-2"></li><button type="submit">Logout</button></li>
+                    </form>
+                </div>
+            </div>
+        </nav>
+    </section>
+
+    <section id="main">
+        <div class="container-fluid text-white text-center"
+            style="height: 680px; background: linear-gradient(#141e30, #243b55) ;">
+            <h3 class="content"> Rearrange the letters to form a meaningful word </h3>
+            <br>
+            <h3 class="oriWord hidden"></h3>
+            <h3 class="msg hidden"></h3>
+            <h3 class="correct hidden"></h3>
+            <br>
+            <h5 class="meaning hidden">Hint: </h5>
+            <br>
+            <p>
+                <input type="text" class="hidden">
+            </p>
+            <p>
+                <button class="btn-success">Click here to start</button>
+
+            </p>
+            <br>
+            <h4> signup to get your score in profile <p class="score"></p>
+            </h4>
+        </div>
+    </section>
+
+    <script>
+        const msg = document.querySelector('.msg');
+        const oriWord = document.querySelector('.oriWord');
+        const meaning = document.querySelector('.meaning');
+        const guess = document.querySelector('input');
+        const btn = document.querySelector('.btn-success');
+        const correct = document.querySelector('.correct');
+        const score = document.querySelector('.score');
+        let play = false;
+
+
+        var s = 0;
+
+        btn.addEventListener('click', function () {
+            if (!play) {
+                play = true;
+                btn.innerHTML = "Guess";
+                guess.classList.toggle('hidden');
+                msg.classList.toggle('hidden');
+                meaning.classList.toggle('hidden');
+                correct.innerHTML = msg.innerHTML;
+            }
+            else {
+                let tempWord = guess.value;
+                console.log(oriWord.innerHTML);
+                if (tempWord === oriWord.innerHTML) {
+                    console.log('correct');
+                    play = false;
+                    msg.innerHTML = "Awesome, your answer is correct";
+                    btn.innerHTML = "Next";
+                    guess.classList.toggle('hidden');
+                    guess.value = "";
+                    s = s + 4;
+                    score.innerHTML = s;
+
+                    console.log(score.innerHTML);
+                    console.log(user);
+                    //location.reload();
+                    /* $.ajax({
+                         type: "POST",
+                         url: "/profile/score",
+                         data: 4,
+                         user: "user",
+                         dataType: "Number",
+                         success: function (data) {
+                             alert("success")
+                             console.log(data)
+                         }
+                         //dataType: dataType*/
+
+                }
+                else {
+                    console.log('incorrect');
+                    msg.innerHTML = `Sorry, your answer is incorrect.Please try again ${correct.innerHTML}`;
+                    s = s - 1;
+                    score.innerHTML = s;
+                }
+            }
+        })
+    </script>
+    {{!--
+    $.post("/profile/score", function (score.innerHTML) {
+    //const sc = score.innerHTML;
+    console.log(score.innerHTML);
+    alert("score " score.innerHTML);
+    }); --}}
+    <form action="/profile/score" method="post">
+        <input type="hidden" value=1 name="Score" />
+        <button type="submit"> Next word </button>
+    </form>
+
+</body>
+
+</html>

@@ -5,11 +5,13 @@ const auth = require("../middleware/auth");
 const User = require("../models/user");
 const { check, validationResult } = require("express-validator");
 
-router.get("/me", auth, async (req, res) => {
+router.get("/myProfile", auth, async (req, res) => {
     console.log("PROFILE GET ");
     try {
         const user = await User.findOne(mongoose.Types.ObjectId(req.user.id)).select('-password');
-        res.json(user);
+        //res.json(user);
+        res.render("MyProfile",{
+            user : req.user});
     } catch (err) {
         console.error(err.message);
         res.status(500).send("server error");
@@ -19,8 +21,15 @@ router.get("/me", auth, async (req, res) => {
 // create or update user profile
 
 //router.route('/signup').post(async (req, res) =>
+router.get("/updateProfile",auth,(req,res)=>{
+    console.log("get update profile");
+    res.render("updateProfile",{
+        user : req.user
+    });
+}) 
 
-router.post("/", auth, async (req, res) => {
+
+router.post("/updateProfile", auth, async (req, res) => {
     console.log("posting profile");
     const { bio, age, school,avatar } = req.body;
     //console.log(req.user);
@@ -41,7 +50,9 @@ router.post("/", auth, async (req, res) => {
                     , { new: true });
 
             console.log("updated");
-            return res.json(profile);
+              // return res.json(profile);
+              // return res.json(profile);
+              res.redirect('../index');
     } catch (err) {
         console.error(err.message);
         res.status(500).send("Server error");
@@ -52,20 +63,25 @@ router.post("/", auth, async (req, res) => {
 // update score
 
 router.post("/score", auth, async (req, res) => {
-    console.log("posting profile");
+    console.log("posting Score");
     const { Score } = req.body;
     //console.log(req.user);
     // build profile object
+    console.log(Score);
     const profileField = {};
     if (Score)
-    profileField.Score = Score;
+    {
+        console.log(Score);
+    profileField.Score = + Score + req.user.Score;
+    }
     try {
         let profile = await User.findOneAndUpdate({ _id : (req.user.id)}
                     , { $set: profileField }
                     , { new: true });
 
             console.log("updated score");
-            return res.json(profile);
+            //return res.json(profile);
+            res.redirect("../index");
     } catch (err) {
         console.error(err.message);
         res.status(500).send("Server error");
@@ -75,13 +91,13 @@ router.post("/score", auth, async (req, res) => {
 
 // get all profile
 
-router.get('/',auth, async (req, res) => {
+router.get('/allProfile',auth, async (req, res) => {
     console.log("all profile ");
     //console.log(req.user);
     try {
-        const user = await
-            User.find().select('name avatar Score');
-        res.json(user);
+        User.find({}, function(err, users) {
+            res.render('allProfiles', {users: users});
+         });
     } catch (err) {
         console.error(err.message);
         res.status(500).send("server error");

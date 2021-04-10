@@ -71,7 +71,8 @@ router.post("/login",[
         httpOnly:true
       });
 
-      res.json(token);
+      //res.json(token);
+      res.redirect("../index");
       console.log(res.cookie.toString());
       await user.save();
 
@@ -101,9 +102,9 @@ router.post('/signup',[
           console.log(errors);
           return res.status(400).json("enter valid details");
         }
-        if (req.body.confirmPassword != req.body.password) {
+     /*    if ((req.body.confirmPassword === req.body.password)) {
             return  res.status(400).send("password must match!");
-        }
+        } */
     try {
         const { email, name, password } = req.body;
         let user = await User.findOne({ email });
@@ -133,7 +134,7 @@ router.post('/signup',[
             httpOnly:true
           });
 
-          res.json(token);
+          //res.json(token);
          // console.log(cookie);
           await user.save();
           //res.send(user);
@@ -152,6 +153,7 @@ router.post('/signup',[
             if (err) throw err;
             res.json({ token });
           }); */
+          res.redirect("../index");
 
     } catch (error) {
         console.log("catch");
@@ -171,7 +173,8 @@ router.post('/logout',auth, async (req, res) => {
         
         await req.user.save()
         //res.redirect('/')
-        res.json("logged out");
+        //res.json("logged out");
+        res.redirect('/');
     } catch (e) {
         res.redirect('/')
         res.status(500).send()

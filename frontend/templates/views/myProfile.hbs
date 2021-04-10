@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>my profile</h1>
+    {{#if user}}
+    <p>user exist</p>
+    <h6>name : {{user.name}}</h6>
+    <h6>email : {{{user.email}}};</h6>
+    <h6>bio : {{user.bio}}</h6>
+    <h6>age : {{user.age}}</h6>
+    <h6>School : {{user.school}}</h6>
+    <h6>No of Words Explored : {{user.Score}}</h6>
+    &nbsp; &nbsp; &nbsp;
+    <a href="updateProfile" class="link-info">Update Profile</a>
+    {{else}}
+    <h4> Please login to view profile</h4>
+    {{/if}}
+
+</body>
+
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>All profile</h1>
+    <dev>
+        {{#each users}}
+        <h4>name : {{this.name}}</h4>
+        <h4>email : {{this.email}}</h4>
+        <h4>bio : {{this.bio}}</h4>
+        <h4>age : {{this.age}}</h4>
+        <h4>school : {{this.school}}</h4>
+        <h4>Score : {{this.Score}}</h4>
+        {{/each}}
+    </dev>
+
+
+</body>
+
+</html>
